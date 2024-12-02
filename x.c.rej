@@ -1,0 +1,19 @@
+diff a/x.c b/x.c	(rejected hunks)
+@@ -149,6 +149,7 @@ static void xhints(void);
+ static int xloadcolor(int, const char *, Color *);
+ static int xloadfont(Font *, FcPattern *);
+ static void xloadfonts(char *, double);
++static void xloadsparefont();
+ static void xunloadfont(Font *);
+ static void xunloadfonts(void);
+ static void xsetenv(void);
+@@ -1057,6 +1120,9 @@ xinit(int cols, int rows)
+ 	usedfont = (opt_font == NULL)? font : opt_font;
+ 	xloadfonts(usedfont, 0);
+ 
++	/* spare font (font2) */
++	xloadsparefont();
++
+ 	/* colors */
+ 	xw.cmap = XDefaultColormap(xw.dpy, xw.scr);
+ 	xloadcols();
